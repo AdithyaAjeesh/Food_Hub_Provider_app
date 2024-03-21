@@ -8,7 +8,8 @@ class AddProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AddProductPageProvider>(context);
+    final provider =
+        Provider.of<AddProductPageProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Products'),
@@ -54,29 +55,31 @@ class AddProduct extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-            
-              DropdownButton(
-                value: provider.dropdownvalue,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: provider.items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  provider.dropdownvalue = newValue!;
-                },
-                style: const TextStyle(color: Colors.black),
-                underline: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.blue,
-                      border: const Border(
-                          bottom: BorderSide(style: BorderStyle.solid))),
-                  height: 1,
-                ),
-              ),
+              Consumer<AddProductPageProvider>(
+                  builder: (context, providers, child) {
+                return DropdownButton(
+                  value: providers.dropdownvalue,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: provider.items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    provider.dropdownvalue = newValue!;
+                  },
+                  style: const TextStyle(color: Colors.black),
+                  underline: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blue,
+                        border: const Border(
+                            bottom: BorderSide(style: BorderStyle.solid))),
+                    height: 1,
+                  ),
+                );
+              }),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {

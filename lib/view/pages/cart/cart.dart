@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/cart_provider.dart';
-import 'package:flutter_store_app/service/cart_function.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -27,9 +26,9 @@ class CartPage extends StatelessWidget {
             cartpro.getAllCartItemsProvider();
             return Expanded(
               child: ListView.builder(
-                  itemCount: cartItemListNotifier.value.length,
+                  itemCount: cartpro.cartitem.length,
                   itemBuilder: (context, index) {
-                    final cartItem = cartItemListNotifier.value[index];
+                    final cartItem = cartpro.cartitem[index];
                     return Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       decoration: const BoxDecoration(

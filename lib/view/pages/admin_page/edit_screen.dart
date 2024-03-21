@@ -29,7 +29,6 @@ class EditScreen extends StatefulWidget {
 class EditScreenState extends State<EditScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
-  TextEditingController disceriptionController = TextEditingController();
   File? _selectImage;
 
   @override
@@ -96,13 +95,6 @@ class EditScreenState extends State<EditScreen> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                TextFormField(
-                  controller: disceriptionController,
-                  decoration: const InputDecoration(
-                    labelText: 'discription',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
                 const SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
@@ -124,25 +116,17 @@ class EditScreenState extends State<EditScreen> {
     final provider = Provider.of<ProductProvider>(context, listen: false);
     final newName = nameController.text.trim();
     final newPrice = priceController.text.trim();
-    final newDiscription = disceriptionController.text.trim();
     final newImagePath =
         _selectImage != null ? _selectImage!.path : widget.image;
-
     if (newName.isEmpty || newPrice.isEmpty || newImagePath.isEmpty) {
       return;
     }
-    // final update = NewFoodModel(
-    //   name: newName,
-    //   price: newPrice,
-    //   imagepath: newImagePath,
-    //   catagory: widget.catogery,
-    // );
     final update = BiriyaniProduct(
       id: 1,
       name: newName,
       catagory: '',
       image: newImagePath,
-      description: newDiscription,
+      description: '',
       price: newPrice,
       quantity: 1,
     );

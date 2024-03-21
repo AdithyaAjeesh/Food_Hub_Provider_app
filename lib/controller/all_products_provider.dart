@@ -19,7 +19,7 @@ class AllProductProvider extends ChangeNotifier {
     ];
 
     if (query != null && query.isNotEmpty) {
-      allProducts = allProducts.where((product) {
+      allProducts = productProvider.biriyani.where((product) {
         return product.name.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }

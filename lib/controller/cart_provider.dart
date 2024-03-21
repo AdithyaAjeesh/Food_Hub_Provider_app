@@ -3,23 +3,26 @@ import 'package:flutter_store_app/model%20/data/cart_model/cart_model.dart';
 import 'package:flutter_store_app/service/cart_function.dart';
 
 class CartProvider extends ChangeNotifier {
-  addToCartProvider(CartItem item) {
-    addToCart(item);
+  List<CartItem> cartitem = [];
+  final CartService cartService = CartService();
+  Future<void> addToCartProvider(CartItem item) async {
+    cartService.addToCart(item);
     notifyListeners();
   }
 
-  deleteCartItemProvider(index) {
-    deleteCartItem(index);
+  Future<void> deleteCartItemProvider(index) async {
+    cartService.deleteCartItem(index);
     notifyListeners();
   }
 
-  getAllCartItemsProvider() {
-    getAllCartItems();
+  Future<void> getAllCartItemsProvider() async {
+    cartitem = await cartService.getAllCartItems();
+    notifyListeners();
   }
 
   double cartTotalPrice() {
     double totalPrice = 0;
-    for (var cartItem in cartItemListNotifier.value) {
+    for (var cartItem in cartitem) {
       totalPrice += double.parse(cartItem.price);
     }
     return totalPrice;

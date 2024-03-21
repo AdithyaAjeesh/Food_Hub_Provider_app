@@ -21,10 +21,15 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> editFoodProvider( BiriyaniProduct value) async {
-    await biriyaniService.editProduct( value);
+  Future<void> editFoodProvider(BiriyaniProduct value) async {
+    await biriyaniService.editProduct(value);
     notifyListeners();
     await getAllBiriyaniProductsProvider();
+  }
+
+  void filteredSearch(List<BiriyaniProduct> value) async {
+    biriyani = value;
+    notifyListeners();
   }
 
   double biriyaniTotalPrice() {

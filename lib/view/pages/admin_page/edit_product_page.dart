@@ -20,6 +20,7 @@ class EditProductPage extends StatelessWidget {
         title: const Text('Edit Products'),
         centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Expanded(
@@ -44,7 +45,6 @@ class EditProductPage extends StatelessWidget {
                               name: product.name,
                               price: product.price,
                               image: product.image,
-                              
                               catogery: '',
                               disceription: product.description,
                             ),
@@ -74,11 +74,11 @@ class ProductEditCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
       width: MediaQuery.of(context).size.width / 2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color.fromARGB(255, 134, 128, 128).withOpacity(0.1),
+        color: const Color.fromARGB(255, 100, 98, 98).withOpacity(0.1),
       ),
       child: Column(
         children: [
