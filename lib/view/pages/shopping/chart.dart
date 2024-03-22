@@ -68,6 +68,7 @@ class ChartPage extends StatelessWidget {
                     textStyle: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                     barBackgroundColors: Colors.grey,
                     barValue: barValue1,
@@ -95,6 +96,7 @@ class ChartPage extends StatelessWidget {
                     textStyle: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                     barBackgroundColors: Colors.grey,
                     barValue: barValue2,

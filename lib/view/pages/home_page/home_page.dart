@@ -7,7 +7,7 @@ import 'package:flutter_store_app/view/widgets/catagory_widget.dart';
 import 'package:flutter_store_app/view/widgets/popular_widget.dart';
 
 class HomePage extends StatelessWidget {
-   HomePage({super.key});
+  HomePage({super.key});
 
   int isSelected = 0;
 
