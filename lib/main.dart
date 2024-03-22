@@ -6,7 +6,6 @@ import 'package:flutter_store_app/controller/all_products_provider.dart';
 import 'package:flutter_store_app/controller/bottom_navbar_provider.dart';
 import 'package:flutter_store_app/controller/carousel_slider_provider.dart';
 import 'package:flutter_store_app/controller/cart_provider.dart';
-import 'package:flutter_store_app/controller/chart_provider.dart';
 import 'package:flutter_store_app/controller/edit_product_provider.dart';
 import 'package:flutter_store_app/controller/login_provider.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
@@ -64,9 +63,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CarouselSliderWidgetProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ChartProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => AllProductProvider(),
