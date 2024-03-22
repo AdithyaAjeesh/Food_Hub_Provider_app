@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
-import 'package:flutter_store_app/service/biriyani_functions.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
+import 'package:flutter_store_app/service/product_functions.dart';
 
 class ProductProvider extends ChangeNotifier {
-  List<BiriyaniProduct> biriyani = [];
+  List<ProductModel> product = [];
 
-  final BiriyaniService biriyaniService = BiriyaniService();
-  Future<void> addBiriyaniProductProvider(BiriyaniProduct value) async {
-    await biriyaniService.addBiriyaniProduct(value);
-    await getAllBiriyaniProductsProvider();
+  final ProductService productService = ProductService();
+  Future<void> addProductProvider(ProductModel value) async {
+    await productService.addProduct(value);
+    await getAllProductsProvider();
   }
 
-  Future<void> deleteBiriyaniProductsProvider(index) async {
-    await biriyaniService.deleteBiriyaniProducts(index);
-    await getAllBiriyaniProductsProvider();
+  Future<void> deleteProductsProvider(index) async {
+    await productService.deleteProducts(index);
+    await getAllProductsProvider();
   }
 
-  Future<void> getAllBiriyaniProductsProvider() async {
-    biriyani = await biriyaniService.getAllBiriyaniProducts();
+  Future<void> getAllProductsProvider() async {
+    product = await productService.getAllProducts();
     notifyListeners();
   }
 
-  Future<void> editFoodProvider(BiriyaniProduct value) async {
-    await biriyaniService.editProduct(value);
+  Future<void> editFoodProvider(ProductModel value) async {
+    await productService.editProduct(value);
     notifyListeners();
-    await getAllBiriyaniProductsProvider();
+    await getAllProductsProvider();
   }
 
-  void filteredSearch(List<BiriyaniProduct> value) async {
-    biriyani = value;
+  void filteredSearch(List<ProductModel> value) async {
+    product = value;
     notifyListeners();
   }
 
-  double biriyaniTotalPrice() {
+  double productTotalPrice() {
     double total = 0;
-    for (var item in biriyani) {
+    for (var item in product) {
       total += double.parse(item.price);
     }
     return total;
   }
 
-  double biriyaniTotalCount() {
+  double productTotalCount() {
     double count = 0;
-    for (var item in biriyani) {
+    for (var item in product) {
       count += item.quantity;
     }
     return count;

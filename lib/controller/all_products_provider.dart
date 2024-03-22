@@ -1,34 +1,41 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_card.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_details.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_card.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_details.dart';
 
 class AllProductProvider extends ChangeNotifier {
   List<dynamic> allProducts = [];
   String searchQuery = '';
   final ProductProvider productProvider = ProductProvider();
 
-  Future<void> getAllProducts({String? query}) async {
+  Future<void> getAllProductsPro({String? query}) async {
     await Future.wait([
-      productProvider.getAllBiriyaniProductsProvider(),
+      productProvider.getAllProductsProvider(),
     ]);
 
     allProducts = [
-      ...productProvider.biriyani,
+      ...productProvider.product,
     ];
 
     if (query != null && query.isNotEmpty) {
-      allProducts = productProvider.biriyani.where((product) {
+      allProducts = productProvider.product.where((product) {
         return product.name.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
     notifyListeners();
   }
 
+  void searchFunction(String value) {
+    searchQuery = value;
+    notifyListeners();
+  }
+
   Widget buildProductCard(dynamic product) {
-    if (product is BiriyaniProduct) {
-      return BiriyaniProductCard(biriyaniProduct: product);
+    if (product is ProductModel) {
+      return ProductCard(biriyaniProduct: product);
     }
     return const SizedBox();
   }
@@ -38,8 +45,8 @@ class AllProductProvider extends ChangeNotifier {
       context,
       MaterialPageRoute(
         builder: (context) {
-          if (product is BiriyaniProduct) {
-            return BiriyaniDetailsScreen(biriyaniProduct: product);
+          if (product is ProductModel) {
+            return ProductDetailsScreen(biriyaniProduct: product);
           }
           return const Scaffold();
         },

@@ -27,4 +27,12 @@ class CartProvider extends ChangeNotifier {
     }
     return totalPrice;
   }
+
+  double cartTotalCount() {
+    double totalCount = 0;
+    for (var cartItem in cartitem) {
+      totalCount += cartItem.quantity;
+    }
+    return totalCount;
+  }
 }

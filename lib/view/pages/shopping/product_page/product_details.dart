@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/cart_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 import 'package:flutter_store_app/model%20/data/cart_model/cart_model.dart';
 import 'package:provider/provider.dart';
 
-class BiriyaniDetailsScreen extends StatelessWidget {
-  final BiriyaniProduct biriyaniProduct;
-  const BiriyaniDetailsScreen({super.key, required this.biriyaniProduct});
+class ProductDetailsScreen extends StatelessWidget {
+  final ProductModel biriyaniProduct;
+  const ProductDetailsScreen({super.key, required this.biriyaniProduct});
 
   @override
   Widget build(BuildContext context) {

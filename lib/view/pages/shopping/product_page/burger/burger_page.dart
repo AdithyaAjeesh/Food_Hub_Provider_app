@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
 import 'package:flutter_store_app/service/chart_functions.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_card.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_details.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_card.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_details.dart';
 import 'package:provider/provider.dart';
 
 class BurgerPage extends StatelessWidget {
@@ -12,7 +12,7 @@ class BurgerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductProvider>(context, listen: false);
     List<int> sum = [];
-    provider.getAllBiriyaniProductsProvider();
+    provider.getAllProductsProvider();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -26,12 +26,7 @@ class BurgerPage extends StatelessWidget {
           Expanded(
               child: Consumer<ProductProvider>(
                 builder: (context, provider, child) {
-                  
-                
-            // valueListenable: biriyaniProductListNotifier,
-            // builder:
-            //     (context, List<BiriyaniProduct> biriyaniproductList, child) {
-              final filteredburgerList = provider.biriyani
+              final filteredburgerList = provider.product
                   .where(
                       (element) => element.catagory.toLowerCase() == 'burger')
                   .toList();
@@ -54,15 +49,15 @@ class BurgerPage extends StatelessWidget {
           
                   return GestureDetector(
                     child:
-                        BiriyaniProductCard(biriyaniProduct: biriyaniProduct),
+                        ProductCard(biriyaniProduct: biriyaniProduct),
                     onLongPress: () {
                       // deleteBurgerProduct(index);
-                      provider.deleteBiriyaniProductsProvider(index);
+                      provider.deleteProductsProvider(index);
                     },
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => BiriyaniDetailsScreen(
+                          builder: (context) => ProductDetailsScreen(
                               biriyaniProduct: biriyaniProduct),
                         ),
                       );

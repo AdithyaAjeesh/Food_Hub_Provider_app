@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 import 'package:flutter_store_app/service/admin_functions.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +39,7 @@ class AddProductPageProvider extends ChangeNotifier {
 
     final provider = Provider.of<ProductProvider>(context, listen: false);
 
-    final product = BiriyaniProduct(
+    final product = ProductModel(
       id: 1,
       name: name,
       image: image!.path,
@@ -48,7 +48,7 @@ class AddProductPageProvider extends ChangeNotifier {
       quantity: 1,
       catagory: dropdownvalue,
     );
-    provider.addBiriyaniProductProvider(product);
+    provider.addProductProvider(product);
     notifyListeners();
 
     Navigator.of(context).pop();

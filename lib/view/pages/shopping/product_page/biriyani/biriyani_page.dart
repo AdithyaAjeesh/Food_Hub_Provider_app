@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_card.dart';
-import 'package:flutter_store_app/view/pages/shopping/product_page/biriyani/biriyani_details.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_card.dart';
+import 'package:flutter_store_app/view/pages/shopping/product_page/product_details.dart';
 import 'package:provider/provider.dart';
 
 class BiriyaniPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class BiriyaniPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductProvider>(context, listen: false);
-    provider.getAllBiriyaniProductsProvider();
+    provider.getAllProductsProvider();
     // getAllBiriyaniProducts();
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +25,7 @@ class BiriyaniPage extends StatelessWidget {
           Expanded(
             child: Consumer<ProductProvider>(
               builder: (context, providers, child) {
-                final filteredbiriyaniList = providers.biriyani
+                final filteredbiriyaniList = providers.product
                     .where((element) =>
                         element.catagory.toLowerCase() == 'biriyani')
                     .toList();
@@ -42,16 +42,15 @@ class BiriyaniPage extends StatelessWidget {
                     final biriyaniProduct = filteredbiriyaniList[index];
 
                     return GestureDetector(
-                      child:
-                          BiriyaniProductCard(biriyaniProduct: biriyaniProduct),
+                      child: ProductCard(biriyaniProduct: biriyaniProduct),
                       onLongPress: () {
                         // deleteBiriyaniProducts(index);
-                        provider.deleteBiriyaniProductsProvider(index);
+                        provider.deleteProductsProvider(index);
                       },
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => BiriyaniDetailsScreen(
+                            builder: (context) => ProductDetailsScreen(
                                 biriyaniProduct: biriyaniProduct),
                           ),
                         );

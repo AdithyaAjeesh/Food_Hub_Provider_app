@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
-part 'biriyani_model.g.dart';
+part 'product_model.g.dart';
 @HiveType(typeId: 1)
-class BiriyaniProduct {
+class ProductModel {
   @HiveField(0)
   final int id;
   @HiveField(1)
@@ -17,7 +17,7 @@ class BiriyaniProduct {
   @HiveField(6)
   final int quantity;
 
-  BiriyaniProduct({
+  ProductModel({
     required this.id,
     required this.name,
     required this.catagory,

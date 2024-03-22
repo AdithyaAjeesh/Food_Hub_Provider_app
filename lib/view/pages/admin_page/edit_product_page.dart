@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/edit_product_provider.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 import 'package:flutter_store_app/view/pages/admin_page/edit_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class EditProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // final editProvider = Provider.of<EditProductProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
-    productProvider.getAllBiriyaniProductsProvider();
+    productProvider.getAllProductsProvider();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Products'),
@@ -30,12 +30,12 @@ class EditProductPage extends StatelessWidget {
                 // builder:
                 //     (BuildContext ctx, List<BiriyaniProduct> productList, _) {
                 return ListView.builder(
-                  itemCount: provider2.biriyani.length,
+                  itemCount: provider2.product.length,
                   itemBuilder: (context, index) {
-                    final product = provider2.biriyani[index];
+                    final product = provider2.product[index];
                     return GestureDetector(
                       onLongPress: () {
-                        productProvider.deleteBiriyaniProductsProvider(index);
+                        productProvider.deleteProductsProvider(index);
                       },
                       onTap: () async {
                         await Navigator.push(
@@ -67,7 +67,7 @@ class EditProductPage extends StatelessWidget {
 }
 
 class ProductEditCard extends StatelessWidget {
-  final BiriyaniProduct biriyaniProduct;
+  final ProductModel biriyaniProduct;
 
   const ProductEditCard({super.key, required this.biriyaniProduct});
 

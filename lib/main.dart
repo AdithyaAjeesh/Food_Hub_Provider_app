@@ -10,7 +10,7 @@ import 'package:flutter_store_app/controller/chart_provider.dart';
 import 'package:flutter_store_app/controller/edit_product_provider.dart';
 import 'package:flutter_store_app/controller/login_provider.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 import 'package:flutter_store_app/model%20/data/cart_model/cart_model.dart';
 import 'package:flutter_store_app/view/pages/admin_page/admin_page.dart';
 import 'package:flutter_store_app/view/pages/shopping/chart.dart';
@@ -29,8 +29,8 @@ Future<void> main() async {
   await SharedPreferences.getInstance();
   await Hive.initFlutter();
 
-  if (!Hive.isAdapterRegistered(BiriyaniProductAdapter().typeId)) {
-    Hive.registerAdapter(BiriyaniProductAdapter());
+  if (!Hive.isAdapterRegistered(ProductModelAdapter().typeId)) {
+    Hive.registerAdapter(ProductModelAdapter());
   }
 
   if (!Hive.isAdapterRegistered(CartItemAdapter().typeId)) {

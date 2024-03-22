@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 
-class BiriyaniProductCard extends StatelessWidget {
-  final BiriyaniProduct biriyaniProduct;
-  const BiriyaniProductCard({super.key, required this.biriyaniProduct});
+class ProductCard extends StatelessWidget {
+  final ProductModel biriyaniProduct;
+  const ProductCard({super.key, required this.biriyaniProduct});
 
   @override
   Widget build(BuildContext context) {

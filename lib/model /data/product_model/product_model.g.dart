@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'biriyani_model.dart';
+part of 'product_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class BiriyaniProductAdapter extends TypeAdapter<BiriyaniProduct> {
+class ProductModelAdapter extends TypeAdapter<ProductModel> {
   @override
   final int typeId = 1;
 
   @override
-  BiriyaniProduct read(BinaryReader reader) {
+  ProductModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return BiriyaniProduct(
+    return ProductModel(
       id: fields[0] as int,
       name: fields[1] as String,
       catagory: fields[2] as String,
@@ -28,7 +28,7 @@ class BiriyaniProductAdapter extends TypeAdapter<BiriyaniProduct> {
   }
 
   @override
-  void write(BinaryWriter writer, BiriyaniProduct obj) {
+  void write(BinaryWriter writer, ProductModel obj) {
     writer
       ..writeByte(7)
       ..writeByte(0)
@@ -53,7 +53,7 @@ class BiriyaniProductAdapter extends TypeAdapter<BiriyaniProduct> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BiriyaniProductAdapter &&
+      other is ProductModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

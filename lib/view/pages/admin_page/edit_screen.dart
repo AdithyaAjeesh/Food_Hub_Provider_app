@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controller/product_provider.dart';
-import 'package:flutter_store_app/model%20/data/biriyani_model/biriyani_model.dart';
+import 'package:flutter_store_app/model%20/data/product_model/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -121,7 +121,7 @@ class EditScreenState extends State<EditScreen> {
     if (newName.isEmpty || newPrice.isEmpty || newImagePath.isEmpty) {
       return;
     }
-    final update = BiriyaniProduct(
+    final update = ProductModel(
       id: 1,
       name: newName,
       catagory: '',
